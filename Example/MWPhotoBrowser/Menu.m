@@ -21,7 +21,9 @@
 		self.title = @"MWPhotoBrowser";
         
         // Clear cache for testing
-        [[SDImageCache sharedImageCache] clearDisk];
+        [[SDImageCache sharedImageCache] deleteOldFilesWithCompletionBlock:^{
+            
+        }];
         [[SDImageCache sharedImageCache] clearMemory];
         
         _segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Push", @"Modal", nil]];
@@ -30,7 +32,7 @@
         
         UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:_segmentedControl];
         self.navigationItem.rightBarButtonItem = item;
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
 
         [self loadAssets];
         
@@ -1044,10 +1046,10 @@
             
             // Videos
             
-            photo = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xpt1/t51.2885-15/e15/11192696_824079697688618_1761661_n.jpg"]];
-            photo.videoURL = [[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xpa1/t50.2886-16/11200303_1440130956287424_1714699187_n.mp4"];
+            photo = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569238768370&di=37a9a53cf2e3e214225827cecddfbfcf&imgtype=0&src=http%3A%2F%2Fgss0.bdstatic.com%2F7LsWdDW5_xN3otebn9fN2DJv%2Fdoc%2Fpic%2Fitem%2F0df431adcbef76098b5100f426dda3cc7cd99e07.jpg"]];
+            photo.videoURL = [[NSURL alloc] initWithString:@"https://v-cdn.zjol.com.cn/279759.mp4"];
             [photos addObject:photo];
-            thumb = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xpt1/t51.2885-15/s150x150/e15/11192696_824079697688618_1761661_n.jpg"]];
+            thumb = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569238768370&di=37a9a53cf2e3e214225827cecddfbfcf&imgtype=0&src=http%3A%2F%2Fgss0.bdstatic.com%2F7LsWdDW5_xN3otebn9fN2DJv%2Fdoc%2Fpic%2Fitem%2F0df431adcbef76098b5100f426dda3cc7cd99e07.jpg"]];
             thumb.isVideo = YES;
             [thumbs addObject:thumb];
             
@@ -1058,17 +1060,17 @@
 //            thumb.isVideo = YES;
 //            [thumbs addObject:thumb];
             
-            photo = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/e15/11240463_963135443745570_1519872157_n.jpg"]];
-            photo.videoURL = [[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xfa1/t50.2886-16/11237510_945154435524423_2137519922_n.mp4"];
+            photo = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569238768370&di=37a9a53cf2e3e214225827cecddfbfcf&imgtype=0&src=http%3A%2F%2Fgss0.bdstatic.com%2F7LsWdDW5_xN3otebn9fN2DJv%2Fdoc%2Fpic%2Fitem%2F0df431adcbef76098b5100f426dda3cc7cd99e07.jpg"]];
+            photo.videoURL = [[NSURL alloc] initWithString:@"https://v-cdn.zjol.com.cn/279759.mp4"];
             [photos addObject:photo];
-            thumb = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s150x150/e15/11240463_963135443745570_1519872157_n.jpg"]];
+            thumb = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569238768370&di=37a9a53cf2e3e214225827cecddfbfcf&imgtype=0&src=http%3A%2F%2Fgss0.bdstatic.com%2F7LsWdDW5_xN3otebn9fN2DJv%2Fdoc%2Fpic%2Fitem%2F0df431adcbef76098b5100f426dda3cc7cd99e07.jpg"]];
             thumb.isVideo = YES;
             [thumbs addObject:thumb];
             
-            photo = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/e15/11313531_1625089227727682_169403963_n.jpg"]];
-            photo.videoURL = [[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xfa1/t50.2886-16/11336249_1783839318509644_116225363_n.mp4"];
+            photo = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569238768370&di=37a9a53cf2e3e214225827cecddfbfcf&imgtype=0&src=http%3A%2F%2Fgss0.bdstatic.com%2F7LsWdDW5_xN3otebn9fN2DJv%2Fdoc%2Fpic%2Fitem%2F0df431adcbef76098b5100f426dda3cc7cd99e07.jpg"]];
+            photo.videoURL = [[NSURL alloc] initWithString:@"https://v-cdn.zjol.com.cn/279759.mp4"];
             [photos addObject:photo];
-            thumb = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/s150x150/e15/11313531_1625089227727682_169403963_n.jpg"]];
+            thumb = [MWPhoto photoWithURL:[[NSURL alloc] initWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569238768370&di=37a9a53cf2e3e214225827cecddfbfcf&imgtype=0&src=http%3A%2F%2Fgss0.bdstatic.com%2F7LsWdDW5_xN3otebn9fN2DJv%2Fdoc%2Fpic%2Fitem%2F0df431adcbef76098b5100f426dda3cc7cd99e07.jpg"]];
             thumb.isVideo = YES;
             [thumbs addObject:thumb];
             
@@ -1092,6 +1094,7 @@
                         [thumbs addObject:[MWPhoto photoWithAsset:asset targetSize:thumbTargetSize]];
                     }
                 } else {
+#if 0
                     // Assets library
                     for (ALAsset *asset in copy) {
                         MWPhoto *photo = [MWPhoto photoWithURL:asset.defaultRepresentation.url];
@@ -1103,6 +1106,7 @@
                             thumb.isVideo = true;
                         }
                     }
+#endif
                 }
             }
 			break;
@@ -1274,12 +1278,14 @@
                 [_assets addObject:obj];
             }];
             if (fetchResults.count > 0) {
-                [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                });
             }
         });
         
     } else {
-        
+#if 0
         // Assets Library iOS < 8
         _ALAssetsLibrary = [[ALAssetsLibrary alloc] init];
         
@@ -1332,7 +1338,7 @@
                                           }];
             
         });
-        
+#endif
     }
     
 }

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MWPhotoBrowser.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
+//#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface Menu : UITableViewController <MWPhotoBrowserDelegate> {
     UISegmentedControl *_segmentedControl;
@@ -19,7 +20,9 @@
 @property (nonatomic, strong) NSMutableArray *thumbs;
 @property (nonatomic, strong) NSMutableArray *assets;
 
-@property (nonatomic, strong) ALAssetsLibrary *ALAssetsLibrary;
+/** 相册管理 */
+@property (nonatomic,strong) PHImageManager *imageManager;
+//@property (nonatomic, strong) ALAssetsLibrary *ALAssetsLibrary;
 
 - (void)loadAssets;
 
